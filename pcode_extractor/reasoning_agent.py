@@ -1805,6 +1805,7 @@ def generate_json_report(
                 "false_positive_risk": f.false_positive_reason,
                 "model_used":        f.model_used,
                 "analysis_time_s":   f.analysis_time_s,
+                "calibration":       f.calibration or {},
             }
             for i, f in enumerate(confirmed, 1)
         ],
