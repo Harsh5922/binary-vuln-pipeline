@@ -1,0 +1,2829 @@
+{
+  "config": {
+    "mode": "stratified",
+    "budget": 30,
+    "library": null,
+    "skip_stage4": false,
+    "skip_stage45": false
+  },
+  "traces": [
+    {
+      "name": "png_handle_eXIf",
+      "binary_id": "PNG001",
+      "expected_cat": "TP",
+      "is_gt": true,
+      "source": "stratified",
+      "category": "allocator",
+      "stage3": {
+        "n_candidates": 7,
+        "n_evidence": 7,
+        "fwd": 9,
+        "bwd": 7,
+        "sem": 28,
+        "prior": 0,
+        "elapsed_s": 0.01
+      },
+      "stage4": {
+        "n_assessments": 4,
+        "vuln_type": "integer_overflow",
+        "hypothesis_support": "Moderate",
+        "confirmed": true,
+        "evidence_quality": "Good",
+        "model_uncertainty": "Moderate",
+        "overall_uncertainty": "Moderate",
+        "reachability": "Medium",
+        "exploitability": "Medium",
+        "impact": "High",
+        "agreement_level": "High",
+        "n_active_signals": 4,
+        "n_hypotheses": 3,
+        "n_contradictions": 1,
+        "elapsed_s": 91.05
+      },
+      "stage45": {
+        "n": 5,
+        "confirmed": 5,
+        "analyses": [
+          {
+            "type": "logic_validation",
+            "bug": "Missing NULL check after allocation",
+            "confidence": 0.8,
+            "has_prior_ref": false
+          },
+          {
+            "type": "state_machine",
+            "bug": "Use-after-free in png_handle_eXIf function",
+            "confidence": 0.9,
+            "has_prior_ref": true
+          },
+          {
+            "type": "arithmetic_correctness",
+            "bug": "Integer overflow in allocation size calculation",
+            "confidence": 0.7,
+            "has_prior_ref": true
+          },
+          {
+            "type": "api_correctness",
+            "bug": "Missing NULL check after allocation and potential use-after-",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          },
+          {
+            "type": "protocol_compliance",
+            "bug": "Unvalidated chunk size and field values",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          }
+        ],
+        "elapsed_s": 38.95
+      },
+      "bef": {
+        "memory_score": 0.5262,
+        "semantic_score": 0.905,
+        "gap": 0.3788,
+        "posterior": 0.9137,
+        "routing": "needs_consensus",
+        "elapsed_s": 0.0
+      },
+      "consensus": {
+        "conflict_type": "agrees_vulnerable",
+        "conflict_resolution": "Both analysts confirm vulnerability. Memory Safety: Moderate. Semantic: Missing NULL check after allocation, Use-after-f",
+        "elapsed_s": 0.01
+      },
+      "finding": {
+        "confirmed": true,
+        "severity": "medium",
+        "confidence": 0.9137,
+        "model_used": "fast/agrees_vulnerable",
+        "stage": "4.6_fusion_judge",
+        "routing": "?"
+      }
+    },
+    {
+      "name": "png_check_IHDR",
+      "binary_id": "PNG001",
+      "expected_cat": "TP",
+      "is_gt": true,
+      "source": "stratified",
+      "category": "parser",
+      "stage3": {
+        "n_candidates": 0,
+        "n_evidence": 0,
+        "fwd": 0,
+        "bwd": 0,
+        "sem": 0,
+        "prior": 0,
+        "elapsed_s": 0.01
+      },
+      "stage4": {
+        "n_assessments": 0,
+        "no_candidates": true
+      },
+      "stage45": {
+        "n": 5,
+        "confirmed": 5,
+        "analyses": [
+          {
+            "type": "logic_validation",
+            "bug": "Missing NULL check after allocation",
+            "confidence": 0.7,
+            "has_prior_ref": false
+          },
+          {
+            "type": "state_machine",
+            "bug": "Potential use-after-free or missing teardown in png_check_IH",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          },
+          {
+            "type": "arithmetic_correctness",
+            "bug": "Integer overflow in width * height * bytes_per_pixel calcula",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          },
+          {
+            "type": "api_correctness",
+            "bug": "Missing NULL check after allocation and potential use-after-",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          },
+          {
+            "type": "protocol_compliance",
+            "bug": "Unvalidated IHDR chunk size and field values",
+            "confidence": 0.9,
+            "has_prior_ref": true
+          }
+        ],
+        "elapsed_s": 23.18
+      },
+      "bef": {
+        "skipped": true,
+        "reason": "no_stage4_assessment"
+      },
+      "finding": {
+        "confirmed": false,
+        "reason": "no_stage4_assessment"
+      }
+    },
+    {
+      "name": "png_check_chunk_length",
+      "binary_id": "PNG001",
+      "expected_cat": "TP",
+      "is_gt": true,
+      "source": "stratified",
+      "category": "arithmetic",
+      "stage3": {
+        "n_candidates": 1,
+        "n_evidence": 1,
+        "fwd": 0,
+        "bwd": 0,
+        "sem": 2,
+        "prior": 0,
+        "elapsed_s": 0.0
+      },
+      "stage4": {
+        "n_assessments": 1,
+        "vuln_type": "integer_overflow",
+        "hypothesis_support": "Moderate",
+        "confirmed": true,
+        "evidence_quality": "Good",
+        "model_uncertainty": "Moderate",
+        "overall_uncertainty": "Moderate",
+        "reachability": "Medium",
+        "exploitability": "Medium",
+        "impact": "High",
+        "agreement_level": "Low",
+        "n_active_signals": 4,
+        "n_hypotheses": 3,
+        "n_contradictions": 1,
+        "elapsed_s": 14.03
+      },
+      "stage45": {
+        "n": 5,
+        "confirmed": 5,
+        "analyses": [
+          {
+            "type": "logic_validation",
+            "bug": "Off-by-one error in chunk length validation",
+            "confidence": 0.8,
+            "has_prior_ref": false
+          },
+          {
+            "type": "state_machine",
+            "bug": "Potential use-after-free or out-of-order API calls in png_ch",
+            "confidence": 0.7,
+            "has_prior_ref": true
+          },
+          {
+            "type": "arithmetic_correctness",
+            "bug": "Integer overflow in chunk length calculation",
+            "confidence": 0.9,
+            "has_prior_ref": true
+          },
+          {
+            "type": "api_correctness",
+            "bug": "Integer overflow in chunk length calculation",
+            "confidence": 0.92,
+            "has_prior_ref": true
+          },
+          {
+            "type": "protocol_compliance",
+            "bug": "Chunk length not validated against total stream size, potent",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          }
+        ],
+        "elapsed_s": 61.94
+      },
+      "bef": {
+        "memory_score": 0.5262,
+        "semantic_score": 0.914,
+        "gap": 0.3878,
+        "posterior": 0.9219,
+        "routing": "needs_consensus",
+        "elapsed_s": 0.0
+      },
+      "consensus": {
+        "conflict_type": "agrees_vulnerable",
+        "conflict_resolution": "Both analysts confirm vulnerability. Memory Safety: Moderate. Semantic: Off-by-one error in chunk length validation, Pot",
+        "elapsed_s": 0.0
+      },
+      "finding": {
+        "confirmed": true,
+        "severity": "medium",
+        "confidence": 0.9219,
+        "model_used": "fast/agrees_vulnerable",
+        "stage": "4.6_fusion_judge",
+        "routing": "?"
+      }
+    },
+    {
+      "name": "png_handle_PLTE",
+      "binary_id": "PNG001",
+      "expected_cat": "TP",
+      "is_gt": true,
+      "source": "stratified",
+      "category": "parser",
+      "stage3": {
+        "n_candidates": 6,
+        "n_evidence": 6,
+        "fwd": 5,
+        "bwd": 5,
+        "sem": 18,
+        "prior": 0,
+        "elapsed_s": 0.01
+      },
+      "stage4": {
+        "n_assessments": 4,
+        "vuln_type": "integer_overflow",
+        "hypothesis_support": "Moderate",
+        "confirmed": false,
+        "evidence_quality": "Poor",
+        "model_uncertainty": "Moderate",
+        "overall_uncertainty": "High",
+        "reachability": "Medium",
+        "exploitability": "Medium",
+        "impact": "High",
+        "agreement_level": "Low",
+        "n_active_signals": 4,
+        "n_hypotheses": 3,
+        "n_contradictions": 1,
+        "elapsed_s": 120.2
+      },
+      "stage45": {
+        "n": 5,
+        "confirmed": 5,
+        "analyses": [
+          {
+            "type": "logic_validation",
+            "bug": "Missing NULL check after allocation",
+            "confidence": 0.7,
+            "has_prior_ref": false
+          },
+          {
+            "type": "state_machine",
+            "bug": "Potential use-after-free vulnerability",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          },
+          {
+            "type": "arithmetic_correctness",
+            "bug": "Integer overflow in calculation of size",
+            "confidence": 0.6,
+            "has_prior_ref": true
+          },
+          {
+            "type": "api_correctness",
+            "bug": "Potential incorrect use of png_crc_finish API",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          },
+          {
+            "type": "protocol_compliance",
+            "bug": "Unvalidated chunk size and field values",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          }
+        ],
+        "elapsed_s": 48.71
+      },
+      "bef": {
+        "memory_score": 0.4186,
+        "semantic_score": 0.8825,
+        "gap": 0.4639,
+        "posterior": 0.8439,
+        "routing": "needs_consensus",
+        "elapsed_s": 0.0
+      },
+      "consensus": {
+        "conflict_type": "one_sided_semantic",
+        "conflict_resolution": "Semantic Analyst only \u2014 Memory Safety Analyst did not confirm this function. Uncertainty elevated: single-analyst verdic",
+        "elapsed_s": 0.0
+      },
+      "finding": {
+        "confirmed": true,
+        "severity": "medium",
+        "confidence": 0.8439,
+        "model_used": "fast/one_sided_semantic",
+        "stage": "4.6_fusion_judge",
+        "routing": "?"
+      }
+    },
+    {
+      "name": "png_get_rowbytes",
+      "binary_id": "PNG001",
+      "expected_cat": "SAFE",
+      "is_gt": false,
+      "source": "stratified",
+      "category": "simple",
+      "stage3": {
+        "n_candidates": 0,
+        "n_evidence": 0,
+        "fwd": 0,
+        "bwd": 0,
+        "sem": 0,
+        "prior": 0,
+        "elapsed_s": 0.0
+      },
+      "stage4": {
+        "n_assessments": 0,
+        "no_candidates": true
+      },
+      "stage45": {
+        "n": 5,
+        "confirmed": 5,
+        "analyses": [
+          {
+            "type": "logic_validation",
+            "bug": "Missing NULL check after allocation",
+            "confidence": 0.7,
+            "has_prior_ref": false
+          },
+          {
+            "type": "state_machine",
+            "bug": "Use-before-initialization of VAR_2",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          },
+          {
+            "type": "arithmetic_correctness",
+            "bug": "Integer overflow in row bytes calculation",
+            "confidence": 0.6,
+            "has_prior_ref": true
+          },
+          {
+            "type": "api_correctness",
+            "bug": "Missing NULL check after allocation and potential use of uni",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          },
+          {
+            "type": "protocol_compliance",
+            "bug": "Unvalidated chunk size and field values",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          }
+        ],
+        "elapsed_s": 37.91
+      },
+      "bef": {
+        "skipped": true,
+        "reason": "no_stage4_assessment"
+      },
+      "finding": {
+        "confirmed": false,
+        "reason": "no_stage4_assessment"
+      }
+    },
+    {
+      "name": "png_read_info",
+      "binary_id": "PNG001",
+      "expected_cat": "SAFE",
+      "is_gt": false,
+      "source": "stratified",
+      "category": "logic",
+      "stage3": {
+        "n_candidates": 27,
+        "n_evidence": 27,
+        "fwd": 26,
+        "bwd": 26,
+        "sem": 54,
+        "prior": 0,
+        "elapsed_s": 0.03
+      },
+      "stage4": {
+        "n_assessments": 4,
+        "vuln_type": "integer_overflow",
+        "hypothesis_support": "Moderate",
+        "confirmed": true,
+        "evidence_quality": "Good",
+        "model_uncertainty": "Moderate",
+        "overall_uncertainty": "Moderate",
+        "reachability": "Medium",
+        "exploitability": "Medium",
+        "impact": "High",
+        "agreement_level": "Low",
+        "n_active_signals": 5,
+        "n_hypotheses": 3,
+        "n_contradictions": 1,
+        "elapsed_s": 93.61
+      },
+      "stage45": {
+        "n": 4,
+        "confirmed": 4,
+        "analyses": [
+          {
+            "type": "logic_validation",
+            "bug": "Missing error handling for failed reads",
+            "confidence": 0.8,
+            "has_prior_ref": false
+          },
+          {
+            "type": "state_machine",
+            "bug": "Use-after-free in png_read_info",
+            "confidence": 0.7,
+            "has_prior_ref": true
+          },
+          {
+            "type": "api_correctness",
+            "bug": "Unchecked return value from png_read_sig and png_read_chunk_",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          },
+          {
+            "type": "protocol_compliance",
+            "bug": "Chunk size not validated against total stream size",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          }
+        ],
+        "elapsed_s": 30.87
+      },
+      "bef": {
+        "memory_score": 0.5262,
+        "semantic_score": 0.8825,
+        "gap": 0.3563,
+        "posterior": 0.893,
+        "routing": "needs_consensus",
+        "elapsed_s": 0.0
+      },
+      "consensus": {
+        "conflict_type": "agrees_vulnerable",
+        "conflict_resolution": "Both analysts confirm vulnerability. Memory Safety: Moderate. Semantic: Missing error handling for failed reads, Use-aft",
+        "elapsed_s": 0.0
+      },
+      "finding": {
+        "confirmed": true,
+        "severity": "medium",
+        "confidence": 0.893,
+        "model_used": "fast/agrees_vulnerable",
+        "stage": "4.6_fusion_judge",
+        "routing": "?"
+      }
+    },
+    {
+      "name": "sqlite3Select",
+      "binary_id": "SQL001",
+      "expected_cat": "TP",
+      "is_gt": true,
+      "source": "stratified",
+      "category": "logic",
+      "stage3": {
+        "n_candidates": 1,
+        "n_evidence": 1,
+        "fwd": 0,
+        "bwd": 0,
+        "sem": 4,
+        "prior": 0,
+        "elapsed_s": 0.07
+      },
+      "stage4": {
+        "n_assessments": 1,
+        "vuln_type": "integer_overflow",
+        "hypothesis_support": "Moderate",
+        "confirmed": true,
+        "evidence_quality": "Good",
+        "model_uncertainty": "Moderate",
+        "overall_uncertainty": "Moderate",
+        "reachability": "Medium",
+        "exploitability": "Medium",
+        "impact": "High",
+        "agreement_level": "Low",
+        "n_active_signals": 4,
+        "n_hypotheses": 3,
+        "n_contradictions": 1,
+        "elapsed_s": 23.55
+      },
+      "stage45": {
+        "n": 5,
+        "confirmed": 5,
+        "analyses": [
+          {
+            "type": "logic_validation",
+            "bug": "Missing NULL check after allocation",
+            "confidence": 0.8,
+            "has_prior_ref": false
+          },
+          {
+            "type": "state_machine",
+            "bug": "Use-after-free in sqlite3Select",
+            "confidence": 0.7,
+            "has_prior_ref": true
+          },
+          {
+            "type": "arithmetic_correctness",
+            "bug": "Integer overflow in calculation of size",
+            "confidence": 0.6,
+            "has_prior_ref": true
+          },
+          {
+            "type": "api_correctness",
+            "bug": "Potential NULL pointer dereference in sqlite3GetVdbe",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          },
+          {
+            "type": "protocol_compliance",
+            "bug": "Unvalidated field value in sqlite3Select",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          }
+        ],
+        "elapsed_s": 64.79
+      },
+      "bef": {
+        "memory_score": 0.5262,
+        "semantic_score": 0.8825,
+        "gap": 0.3563,
+        "posterior": 0.893,
+        "routing": "needs_consensus",
+        "elapsed_s": 0.0
+      },
+      "consensus": {
+        "conflict_type": "agrees_vulnerable",
+        "conflict_resolution": "Both analysts confirm vulnerability. Memory Safety: Moderate. Semantic: Missing NULL check after allocation, Use-after-f",
+        "elapsed_s": 0.0
+      },
+      "finding": {
+        "confirmed": true,
+        "severity": "medium",
+        "confidence": 0.893,
+        "model_used": "fast/agrees_vulnerable",
+        "stage": "4.6_fusion_judge",
+        "routing": "?"
+      }
+    },
+    {
+      "name": "multiSelect",
+      "binary_id": "SQL001",
+      "expected_cat": "TP",
+      "is_gt": true,
+      "source": "stratified",
+      "category": "logic",
+      "stage3": {
+        "n_candidates": 1,
+        "n_evidence": 1,
+        "fwd": 0,
+        "bwd": 0,
+        "sem": 2,
+        "prior": 0,
+        "elapsed_s": 0.03
+      },
+      "stage4": {
+        "n_assessments": 1,
+        "vuln_type": "integer_overflow",
+        "hypothesis_support": "Weak",
+        "confirmed": false,
+        "evidence_quality": "Poor",
+        "model_uncertainty": "High",
+        "overall_uncertainty": "High",
+        "reachability": "Medium",
+        "exploitability": "Low",
+        "impact": "Medium",
+        "agreement_level": "Low",
+        "n_active_signals": 4,
+        "n_hypotheses": 3,
+        "n_contradictions": 1,
+        "elapsed_s": 17.26
+      },
+      "stage45": {
+        "n": 5,
+        "confirmed": 5,
+        "analyses": [
+          {
+            "type": "logic_validation",
+            "bug": "Missing NULL check after allocation",
+            "confidence": 0.8,
+            "has_prior_ref": false
+          },
+          {
+            "type": "state_machine",
+            "bug": "Use-after-free in sqlite3GetVdbe result",
+            "confidence": 0.9,
+            "has_prior_ref": true
+          },
+          {
+            "type": "arithmetic_correctness",
+            "bug": "Integer overflow in arithmetic operations",
+            "confidence": 0.7,
+            "has_prior_ref": true
+          },
+          {
+            "type": "api_correctness",
+            "bug": "Potential NULL pointer dereference in sqlite3GetVdbe result",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          },
+          {
+            "type": "protocol_compliance",
+            "bug": "Unvalidated field values in SQLite operations",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          }
+        ],
+        "elapsed_s": 72.29
+      },
+      "bef": {
+        "memory_score": 0.196,
+        "semantic_score": 0.905,
+        "gap": 0.709,
+        "posterior": 0.699,
+        "routing": "needs_consensus",
+        "elapsed_s": 0.0
+      },
+      "consensus": {
+        "conflict_type": "one_sided_semantic",
+        "conflict_resolution": "Semantic Analyst only \u2014 Memory Safety Analyst did not confirm this function. Uncertainty elevated: single-analyst verdic",
+        "elapsed_s": 0.0
+      },
+      "finding": {
+        "confirmed": true,
+        "severity": "medium",
+        "confidence": 0.699,
+        "model_used": "fast/one_sided_semantic",
+        "stage": "4.6_fusion_judge",
+        "routing": "?"
+      }
+    },
+    {
+      "name": "sqlite3_str_vappendf",
+      "binary_id": "SQL001",
+      "expected_cat": "TP",
+      "is_gt": true,
+      "source": "stratified",
+      "category": "arithmetic",
+      "stage3": {
+        "n_candidates": 1,
+        "n_evidence": 1,
+        "fwd": 0,
+        "bwd": 0,
+        "sem": 5,
+        "prior": 0,
+        "elapsed_s": 0.04
+      },
+      "stage4": {
+        "n_assessments": 1,
+        "vuln_type": "integer_overflow",
+        "hypothesis_support": "Moderate",
+        "confirmed": true,
+        "evidence_quality": "Good",
+        "model_uncertainty": "Moderate",
+        "overall_uncertainty": "Moderate",
+        "reachability": "Medium",
+        "exploitability": "Medium",
+        "impact": "High",
+        "agreement_level": "Low",
+        "n_active_signals": 4,
+        "n_hypotheses": 3,
+        "n_contradictions": 1,
+        "elapsed_s": 86.08
+      },
+      "stage45": {
+        "n": 5,
+        "confirmed": 5,
+        "analyses": [
+          {
+            "type": "logic_validation",
+            "bug": "Missing NULL check after allocation",
+            "confidence": 0.7,
+            "has_prior_ref": false
+          },
+          {
+            "type": "state_machine",
+            "bug": "Potential use-after-free vulnerability",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          },
+          {
+            "type": "arithmetic_correctness",
+            "bug": "Integer overflow in string length calculation",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          },
+          {
+            "type": "api_correctness",
+            "bug": "Potential format string vulnerability in sqlite3_str_append",
+            "confidence": 0.6,
+            "has_prior_ref": true
+          },
+          {
+            "type": "protocol_compliance",
+            "bug": "Unvalidated integer field in string length calculation",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          }
+        ],
+        "elapsed_s": 44.77
+      },
+      "bef": {
+        "memory_score": 0.5262,
+        "semantic_score": 0.8825,
+        "gap": 0.3563,
+        "posterior": 0.893,
+        "routing": "needs_consensus",
+        "elapsed_s": 0.0
+      },
+      "consensus": {
+        "conflict_type": "agrees_vulnerable",
+        "conflict_resolution": "Both analysts confirm vulnerability. Memory Safety: Moderate. Semantic: Missing NULL check after allocation, Potential u",
+        "elapsed_s": 0.0
+      },
+      "finding": {
+        "confirmed": true,
+        "severity": "medium",
+        "confidence": 0.893,
+        "model_used": "fast/agrees_vulnerable",
+        "stage": "4.6_fusion_judge",
+        "routing": "?"
+      }
+    },
+    {
+      "name": "flattenSubquery",
+      "binary_id": "SQL001",
+      "expected_cat": "TP",
+      "is_gt": true,
+      "source": "stratified",
+      "category": "logic",
+      "stage3": {
+        "n_candidates": 1,
+        "n_evidence": 1,
+        "fwd": 0,
+        "bwd": 0,
+        "sem": 5,
+        "prior": 0,
+        "elapsed_s": 0.02
+      },
+      "stage4": {
+        "n_assessments": 1,
+        "vuln_type": "integer_overflow",
+        "hypothesis_support": "Moderate",
+        "confirmed": true,
+        "evidence_quality": "Good",
+        "model_uncertainty": "Moderate",
+        "overall_uncertainty": "Moderate",
+        "reachability": "Medium",
+        "exploitability": "Medium",
+        "impact": "High",
+        "agreement_level": "Low",
+        "n_active_signals": 4,
+        "n_hypotheses": 3,
+        "n_contradictions": 1,
+        "elapsed_s": 46.27
+      },
+      "stage45": {
+        "n": 5,
+        "confirmed": 5,
+        "analyses": [
+          {
+            "type": "logic_validation",
+            "bug": "Missing NULL check after allocation",
+            "confidence": 0.8,
+            "has_prior_ref": false
+          },
+          {
+            "type": "state_machine",
+            "bug": "Use-after-free in sqlite3DbFree call",
+            "confidence": 0.7,
+            "has_prior_ref": true
+          },
+          {
+            "type": "arithmetic_correctness",
+            "bug": "Integer overflow in allocation size calculation",
+            "confidence": 0.6,
+            "has_prior_ref": true
+          },
+          {
+            "type": "api_correctness",
+            "bug": "Missing NULL check after allocation and potential use-after-",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          },
+          {
+            "type": "protocol_compliance",
+            "bug": "Unvalidated field value in database query",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          }
+        ],
+        "elapsed_s": 25.67
+      },
+      "bef": {
+        "memory_score": 0.5262,
+        "semantic_score": 0.8825,
+        "gap": 0.3563,
+        "posterior": 0.893,
+        "routing": "needs_consensus",
+        "elapsed_s": 0.0
+      },
+      "consensus": {
+        "conflict_type": "agrees_vulnerable",
+        "conflict_resolution": "Both analysts confirm vulnerability. Memory Safety: Moderate. Semantic: Missing NULL check after allocation, Use-after-f",
+        "elapsed_s": 0.0
+      },
+      "finding": {
+        "confirmed": true,
+        "severity": "medium",
+        "confidence": 0.893,
+        "model_used": "fast/agrees_vulnerable",
+        "stage": "4.6_fusion_judge",
+        "routing": "?"
+      }
+    },
+    {
+      "name": "selectExpander",
+      "binary_id": "SQL001",
+      "expected_cat": "TP",
+      "is_gt": true,
+      "source": "stratified",
+      "category": "logic",
+      "stage3": {
+        "n_candidates": 1,
+        "n_evidence": 1,
+        "fwd": 0,
+        "bwd": 0,
+        "sem": 4,
+        "prior": 0,
+        "elapsed_s": 0.02
+      },
+      "stage4": {
+        "n_assessments": 1,
+        "vuln_type": "integer_overflow",
+        "hypothesis_support": "Moderate",
+        "confirmed": true,
+        "evidence_quality": "Good",
+        "model_uncertainty": "Moderate",
+        "overall_uncertainty": "Moderate",
+        "reachability": "Medium",
+        "exploitability": "Medium",
+        "impact": "High",
+        "agreement_level": "Low",
+        "n_active_signals": 4,
+        "n_hypotheses": 3,
+        "n_contradictions": 1,
+        "elapsed_s": 28.62
+      },
+      "stage45": {
+        "n": 4,
+        "confirmed": 4,
+        "analyses": [
+          {
+            "type": "state_machine",
+            "bug": "Use-after-free in sqlite3DbMallocZero allocation",
+            "confidence": 0.7,
+            "has_prior_ref": false
+          },
+          {
+            "type": "arithmetic_correctness",
+            "bug": "Integer overflow in memory allocation size calculation",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          },
+          {
+            "type": "api_correctness",
+            "bug": "Unchecked return value of sqlite3DbMallocZero",
+            "confidence": 0.9,
+            "has_prior_ref": true
+          },
+          {
+            "type": "protocol_compliance",
+            "bug": "Unvalidated field value in database query",
+            "confidence": 0.6,
+            "has_prior_ref": true
+          }
+        ],
+        "elapsed_s": 26.05
+      },
+      "bef": {
+        "memory_score": 0.5262,
+        "semantic_score": 0.905,
+        "gap": 0.3788,
+        "posterior": 0.9137,
+        "routing": "needs_consensus",
+        "elapsed_s": 0.0
+      },
+      "consensus": {
+        "conflict_type": "agrees_vulnerable",
+        "conflict_resolution": "Both analysts confirm vulnerability. Memory Safety: Moderate. Semantic: Use-after-free in sqlite3DbMallocZero allocation",
+        "elapsed_s": 0.0
+      },
+      "finding": {
+        "confirmed": true,
+        "severity": "medium",
+        "confidence": 0.9137,
+        "model_used": "fast/agrees_vulnerable",
+        "stage": "4.6_fusion_judge",
+        "routing": "?"
+      }
+    },
+    {
+      "name": "sqlite3_errmsg",
+      "binary_id": "SQL001",
+      "expected_cat": "SAFE",
+      "is_gt": false,
+      "source": "stratified",
+      "category": "simple",
+      "stage3": {
+        "n_candidates": 0,
+        "n_evidence": 0,
+        "fwd": 0,
+        "bwd": 0,
+        "sem": 0,
+        "prior": 0,
+        "elapsed_s": 0.01
+      },
+      "stage4": {
+        "n_assessments": 0,
+        "no_candidates": true
+      },
+      "stage45": {
+        "n": 4,
+        "confirmed": 4,
+        "analyses": [
+          {
+            "type": "logic_validation",
+            "bug": "Missing NULL check after allocation",
+            "confidence": 0.8,
+            "has_prior_ref": false
+          },
+          {
+            "type": "state_machine",
+            "bug": "Use-after-free in sqlite3_errmsg function",
+            "confidence": 0.7,
+            "has_prior_ref": true
+          },
+          {
+            "type": "api_correctness",
+            "bug": "Missing error handling for sqlite3_mutex_enter and sqlite3_m",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          },
+          {
+            "type": "protocol_compliance",
+            "bug": "Missing validation of field values",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          }
+        ],
+        "elapsed_s": 15.88
+      },
+      "bef": {
+        "skipped": true,
+        "reason": "no_stage4_assessment"
+      },
+      "finding": {
+        "confirmed": false,
+        "reason": "no_stage4_assessment"
+      }
+    },
+    {
+      "name": "xmlStringLenDecodeEntities",
+      "binary_id": "XML001",
+      "expected_cat": "TP",
+      "is_gt": true,
+      "source": "stratified",
+      "category": "arithmetic",
+      "stage3": {
+        "n_candidates": 5,
+        "n_evidence": 4,
+        "fwd": 3,
+        "bwd": 3,
+        "sem": 20,
+        "prior": 0,
+        "elapsed_s": 0.02
+      },
+      "stage4": {
+        "n_assessments": 4,
+        "vuln_type": "integer_overflow",
+        "hypothesis_support": "Moderate",
+        "confirmed": true,
+        "evidence_quality": "Good",
+        "model_uncertainty": "Moderate",
+        "overall_uncertainty": "Moderate",
+        "reachability": "Medium",
+        "exploitability": "Medium",
+        "impact": "High",
+        "agreement_level": "Low",
+        "n_active_signals": 4,
+        "n_hypotheses": 3,
+        "n_contradictions": 1,
+        "elapsed_s": 121.02
+      },
+      "stage45": {
+        "n": 4,
+        "confirmed": 4,
+        "analyses": [
+          {
+            "type": "logic_validation",
+            "bug": "Missing NULL check after allocation",
+            "confidence": 0.8,
+            "has_prior_ref": false
+          },
+          {
+            "type": "state_machine",
+            "bug": "Use-after-free in xmlStringLenDecodeEntities",
+            "confidence": 0.7,
+            "has_prior_ref": true
+          },
+          {
+            "type": "arithmetic_correctness",
+            "bug": "Integer overflow in xmlStringLenDecodeEntities",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          },
+          {
+            "type": "protocol_compliance",
+            "bug": "Unvalidated length field used in memory allocation",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          }
+        ],
+        "elapsed_s": 26.74
+      },
+      "bef": {
+        "memory_score": 0.5262,
+        "semantic_score": 0.8825,
+        "gap": 0.3563,
+        "posterior": 0.893,
+        "routing": "needs_consensus",
+        "elapsed_s": 0.0
+      },
+      "consensus": {
+        "conflict_type": "agrees_vulnerable",
+        "conflict_resolution": "Both analysts confirm vulnerability. Memory Safety: Moderate. Semantic: Missing NULL check after allocation, Use-after-f",
+        "elapsed_s": 0.0
+      },
+      "finding": {
+        "confirmed": true,
+        "severity": "medium",
+        "confidence": 0.893,
+        "model_used": "fast/agrees_vulnerable",
+        "stage": "4.6_fusion_judge",
+        "routing": "?"
+      }
+    },
+    {
+      "name": "htmlParseTryOrFinish",
+      "binary_id": "XML001",
+      "expected_cat": "TP",
+      "is_gt": true,
+      "source": "stratified",
+      "category": "parser",
+      "stage3": {
+        "n_candidates": 2,
+        "n_evidence": 2,
+        "fwd": 1,
+        "bwd": 1,
+        "sem": 4,
+        "prior": 0,
+        "elapsed_s": 0.06
+      },
+      "stage4": {
+        "n_assessments": 2,
+        "vuln_type": "integer_overflow",
+        "hypothesis_support": "Moderate",
+        "confirmed": true,
+        "evidence_quality": "Good",
+        "model_uncertainty": "Moderate",
+        "overall_uncertainty": "Moderate",
+        "reachability": "Medium",
+        "exploitability": "Medium",
+        "impact": "High",
+        "agreement_level": "Low",
+        "n_active_signals": 4,
+        "n_hypotheses": 3,
+        "n_contradictions": 1,
+        "elapsed_s": 60.47
+      },
+      "stage45": {
+        "n": 5,
+        "confirmed": 5,
+        "analyses": [
+          {
+            "type": "logic_validation",
+            "bug": "Missing NULL check after allocation",
+            "confidence": 0.7,
+            "has_prior_ref": false
+          },
+          {
+            "type": "state_machine",
+            "bug": "Use-after-free in xmlBufUse call",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          },
+          {
+            "type": "arithmetic_correctness",
+            "bug": "Integer overflow in calculation of size",
+            "confidence": 0.6,
+            "has_prior_ref": true
+          },
+          {
+            "type": "api_correctness",
+            "bug": "Potential NULL pointer dereference in xmlBufUse call",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          },
+          {
+            "type": "protocol_compliance",
+            "bug": "Unvalidated length field used directly",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          }
+        ],
+        "elapsed_s": 41.84
+      },
+      "bef": {
+        "memory_score": 0.5262,
+        "semantic_score": 0.8825,
+        "gap": 0.3563,
+        "posterior": 0.893,
+        "routing": "needs_consensus",
+        "elapsed_s": 0.0
+      },
+      "consensus": {
+        "conflict_type": "agrees_vulnerable",
+        "conflict_resolution": "Both analysts confirm vulnerability. Memory Safety: Moderate. Semantic: Missing NULL check after allocation, Use-after-f",
+        "elapsed_s": 0.0
+      },
+      "finding": {
+        "confirmed": true,
+        "severity": "medium",
+        "confidence": 0.893,
+        "model_used": "fast/agrees_vulnerable",
+        "stage": "4.6_fusion_judge",
+        "routing": "?"
+      }
+    },
+    {
+      "name": "xmlSnprintfElementContent",
+      "binary_id": "XML001",
+      "expected_cat": "TP",
+      "is_gt": true,
+      "source": "stratified",
+      "category": "arithmetic",
+      "stage3": {
+        "n_candidates": 1,
+        "n_evidence": 1,
+        "fwd": 0,
+        "bwd": 0,
+        "sem": 2,
+        "prior": 0,
+        "elapsed_s": 0.02
+      },
+      "stage4": {
+        "n_assessments": 1,
+        "vuln_type": "integer_overflow",
+        "hypothesis_support": "Moderate",
+        "confirmed": false,
+        "evidence_quality": "Poor",
+        "model_uncertainty": "High",
+        "overall_uncertainty": "High",
+        "reachability": "Medium",
+        "exploitability": "Medium",
+        "impact": "High",
+        "agreement_level": "Low",
+        "n_active_signals": 4,
+        "n_hypotheses": 3,
+        "n_contradictions": 1,
+        "elapsed_s": 57.51
+      },
+      "stage45": {
+        "n": 5,
+        "confirmed": 5,
+        "analyses": [
+          {
+            "type": "logic_validation",
+            "bug": "Missing NULL check after allocation",
+            "confidence": 0.7,
+            "has_prior_ref": false
+          },
+          {
+            "type": "state_machine",
+            "bug": "Potential use-after-free vulnerability",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          },
+          {
+            "type": "arithmetic_correctness",
+            "bug": "Integer overflow in string length calculation",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          },
+          {
+            "type": "api_correctness",
+            "bug": "Potential format string vulnerability",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          },
+          {
+            "type": "protocol_compliance",
+            "bug": "Unvalidated string length used in memory operations",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          }
+        ],
+        "elapsed_s": 57.79
+      },
+      "bef": {
+        "memory_score": 0.4186,
+        "semantic_score": 0.8825,
+        "gap": 0.4639,
+        "posterior": 0.8439,
+        "routing": "needs_consensus",
+        "elapsed_s": 0.0
+      },
+      "consensus": {
+        "conflict_type": "one_sided_semantic",
+        "conflict_resolution": "Semantic Analyst only \u2014 Memory Safety Analyst did not confirm this function. Uncertainty elevated: single-analyst verdic",
+        "elapsed_s": 0.0
+      },
+      "finding": {
+        "confirmed": true,
+        "severity": "medium",
+        "confidence": 0.8439,
+        "model_used": "fast/one_sided_semantic",
+        "stage": "4.6_fusion_judge",
+        "routing": "?"
+      }
+    },
+    {
+      "name": "xmlStrncat",
+      "binary_id": "XML001",
+      "expected_cat": "TP",
+      "is_gt": true,
+      "source": "stratified",
+      "category": "allocator",
+      "stage3": {
+        "n_candidates": 2,
+        "n_evidence": 2,
+        "fwd": 1,
+        "bwd": 1,
+        "sem": 8,
+        "prior": 0,
+        "elapsed_s": 0.01
+      },
+      "stage4": {
+        "n_assessments": 2,
+        "vuln_type": "integer_overflow",
+        "hypothesis_support": "Moderate",
+        "confirmed": true,
+        "evidence_quality": "Good",
+        "model_uncertainty": "Moderate",
+        "overall_uncertainty": "Moderate",
+        "reachability": "Medium",
+        "exploitability": "Medium",
+        "impact": "High",
+        "agreement_level": "Low",
+        "n_active_signals": 4,
+        "n_hypotheses": 3,
+        "n_contradictions": 1,
+        "elapsed_s": 92.12
+      },
+      "stage45": {
+        "n": 5,
+        "confirmed": 5,
+        "analyses": [
+          {
+            "type": "logic_validation",
+            "bug": "Missing NULL check after allocation",
+            "confidence": 0.8,
+            "has_prior_ref": false
+          },
+          {
+            "type": "state_machine",
+            "bug": "Potential use-after-free vulnerability",
+            "confidence": 0.9,
+            "has_prior_ref": true
+          },
+          {
+            "type": "arithmetic_correctness",
+            "bug": "Integer overflow in xmlStrncat function",
+            "confidence": 0.7,
+            "has_prior_ref": true
+          },
+          {
+            "type": "api_correctness",
+            "bug": "Potential memory leak due to incorrect realloc usage",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          },
+          {
+            "type": "protocol_compliance",
+            "bug": "Integer overflow in xmlStrncat function",
+            "confidence": 0.75,
+            "has_prior_ref": true
+          }
+        ],
+        "elapsed_s": 44.4
+      },
+      "bef": {
+        "memory_score": 0.5262,
+        "semantic_score": 0.905,
+        "gap": 0.3788,
+        "posterior": 0.9137,
+        "routing": "needs_consensus",
+        "elapsed_s": 0.0
+      },
+      "consensus": {
+        "conflict_type": "agrees_vulnerable",
+        "conflict_resolution": "Both analysts confirm vulnerability. Memory Safety: Moderate. Semantic: Missing NULL check after allocation, Potential u",
+        "elapsed_s": 0.0
+      },
+      "finding": {
+        "confirmed": true,
+        "severity": "medium",
+        "confidence": 0.9137,
+        "model_used": "fast/agrees_vulnerable",
+        "stage": "4.6_fusion_judge",
+        "routing": "?"
+      }
+    },
+    {
+      "name": "xmlParseComment",
+      "binary_id": "XML001",
+      "expected_cat": "TP",
+      "is_gt": true,
+      "source": "stratified",
+      "category": "parser",
+      "stage3": {
+        "n_candidates": 5,
+        "n_evidence": 4,
+        "fwd": 3,
+        "bwd": 3,
+        "sem": 16,
+        "prior": 0,
+        "elapsed_s": 0.02
+      },
+      "stage4": {
+        "n_assessments": 4,
+        "vuln_type": "integer_overflow",
+        "hypothesis_support": "Moderate",
+        "confirmed": true,
+        "evidence_quality": "Good",
+        "model_uncertainty": "Moderate",
+        "overall_uncertainty": "Moderate",
+        "reachability": "Medium",
+        "exploitability": "Medium",
+        "impact": "High",
+        "agreement_level": "Low",
+        "n_active_signals": 5,
+        "n_hypotheses": 3,
+        "n_contradictions": 1,
+        "elapsed_s": 143.79
+      },
+      "stage45": {
+        "n": 5,
+        "confirmed": 5,
+        "analyses": [
+          {
+            "type": "logic_validation",
+            "bug": "Missing NULL check after allocation",
+            "confidence": 0.8,
+            "has_prior_ref": false
+          },
+          {
+            "type": "state_machine",
+            "bug": "Use-after-free in xmlParseComment function",
+            "confidence": 0.7,
+            "has_prior_ref": true
+          },
+          {
+            "type": "arithmetic_correctness",
+            "bug": "Integer overflow in xmlParserInputGrow size calculation",
+            "confidence": 0.6,
+            "has_prior_ref": true
+          },
+          {
+            "type": "api_correctness",
+            "bug": "Unchecked return value of xmlParserInputGrow and xmlGROW",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          },
+          {
+            "type": "protocol_compliance",
+            "bug": "Unvalidated length field used directly",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          }
+        ],
+        "elapsed_s": 34.86
+      },
+      "bef": {
+        "memory_score": 0.5262,
+        "semantic_score": 0.8825,
+        "gap": 0.3563,
+        "posterior": 0.893,
+        "routing": "needs_consensus",
+        "elapsed_s": 0.0
+      },
+      "consensus": {
+        "conflict_type": "agrees_vulnerable",
+        "conflict_resolution": "Both analysts confirm vulnerability. Memory Safety: Moderate. Semantic: Missing NULL check after allocation, Use-after-f",
+        "elapsed_s": 0.0
+      },
+      "finding": {
+        "confirmed": true,
+        "severity": "medium",
+        "confidence": 0.893,
+        "model_used": "fast/agrees_vulnerable",
+        "stage": "4.6_fusion_judge",
+        "routing": "?"
+      }
+    },
+    {
+      "name": "xmlStrlen",
+      "binary_id": "XML001",
+      "expected_cat": "SAFE",
+      "is_gt": false,
+      "source": "stratified",
+      "category": "simple",
+      "stage3": {
+        "n_candidates": 0,
+        "n_evidence": 0,
+        "fwd": 0,
+        "bwd": 0,
+        "sem": 0,
+        "prior": 0,
+        "elapsed_s": 0.0
+      },
+      "stage4": {
+        "n_assessments": 0,
+        "no_candidates": true
+      },
+      "stage45": {
+        "n": 4,
+        "confirmed": 4,
+        "analyses": [
+          {
+            "type": "logic_validation",
+            "bug": "Missing NULL check after allocation",
+            "confidence": 0.7,
+            "has_prior_ref": false
+          },
+          {
+            "type": "state_machine",
+            "bug": "Use-after-free or missing NULL check",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          },
+          {
+            "type": "api_correctness",
+            "bug": "Missing NULL check after allocation",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          },
+          {
+            "type": "protocol_compliance",
+            "bug": "Unvalidated length field used directly",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          }
+        ],
+        "elapsed_s": 21.43
+      },
+      "bef": {
+        "skipped": true,
+        "reason": "no_stage4_assessment"
+      },
+      "finding": {
+        "confirmed": false,
+        "reason": "no_stage4_assessment"
+      }
+    },
+    {
+      "name": "LZWDecodeCompat",
+      "binary_id": "TIF001",
+      "expected_cat": "TP",
+      "is_gt": true,
+      "source": "stratified",
+      "category": "arithmetic",
+      "stage3": {
+        "n_candidates": 1,
+        "n_evidence": 1,
+        "fwd": 0,
+        "bwd": 0,
+        "sem": 3,
+        "prior": 0,
+        "elapsed_s": 0.02
+      },
+      "stage4": {
+        "n_assessments": 1,
+        "vuln_type": "integer_overflow",
+        "hypothesis_support": "Moderate",
+        "confirmed": false,
+        "evidence_quality": "Poor",
+        "model_uncertainty": "Moderate",
+        "overall_uncertainty": "High",
+        "reachability": "Medium",
+        "exploitability": "Medium",
+        "impact": "High",
+        "agreement_level": "Low",
+        "n_active_signals": 4,
+        "n_hypotheses": 3,
+        "n_contradictions": 1,
+        "elapsed_s": 18.81
+      },
+      "stage45": {
+        "n": 5,
+        "confirmed": 5,
+        "analyses": [
+          {
+            "type": "logic_validation",
+            "bug": "Missing NULL check after allocation",
+            "confidence": 0.7,
+            "has_prior_ref": false
+          },
+          {
+            "type": "state_machine",
+            "bug": "Use-after-free vulnerability",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          },
+          {
+            "type": "arithmetic_correctness",
+            "bug": "Integer overflow in calculation of size",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          },
+          {
+            "type": "api_correctness",
+            "bug": "Unvalidated memory access after allocation",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          },
+          {
+            "type": "protocol_compliance",
+            "bug": "Unvalidated chunk size and field values in image decoding",
+            "confidence": 0.9,
+            "has_prior_ref": true
+          }
+        ],
+        "elapsed_s": 36.89
+      },
+      "bef": {
+        "memory_score": 0.4186,
+        "semantic_score": 0.905,
+        "gap": 0.4864,
+        "posterior": 0.8728,
+        "routing": "needs_consensus",
+        "elapsed_s": 0.0
+      },
+      "consensus": {
+        "conflict_type": "one_sided_semantic",
+        "conflict_resolution": "Semantic Analyst only \u2014 Memory Safety Analyst did not confirm this function. Uncertainty elevated: single-analyst verdic",
+        "elapsed_s": 0.0
+      },
+      "finding": {
+        "confirmed": true,
+        "severity": "medium",
+        "confidence": 0.8728,
+        "model_used": "fast/one_sided_semantic",
+        "stage": "4.6_fusion_judge",
+        "routing": "?"
+      }
+    },
+    {
+      "name": "PixarLogDecode",
+      "binary_id": "TIF001",
+      "expected_cat": "TP",
+      "is_gt": true,
+      "source": "stratified",
+      "category": "arithmetic",
+      "stage3": {
+        "n_candidates": 1,
+        "n_evidence": 1,
+        "fwd": 0,
+        "bwd": 0,
+        "sem": 3,
+        "prior": 0,
+        "elapsed_s": 0.01
+      },
+      "stage4": {
+        "n_assessments": 1,
+        "vuln_type": "integer_overflow",
+        "hypothesis_support": "Moderate",
+        "confirmed": true,
+        "evidence_quality": "Good",
+        "model_uncertainty": "Moderate",
+        "overall_uncertainty": "Moderate",
+        "reachability": "Medium",
+        "exploitability": "Medium",
+        "impact": "High",
+        "agreement_level": "Low",
+        "n_active_signals": 4,
+        "n_hypotheses": 3,
+        "n_contradictions": 1,
+        "elapsed_s": 29.64
+      },
+      "stage45": {
+        "n": 5,
+        "confirmed": 5,
+        "analyses": [
+          {
+            "type": "logic_validation",
+            "bug": "Missing NULL check after allocation",
+            "confidence": 0.8,
+            "has_prior_ref": false
+          },
+          {
+            "type": "state_machine",
+            "bug": "Use-after-free in PixarLogDecode function",
+            "confidence": 0.7,
+            "has_prior_ref": true
+          },
+          {
+            "type": "arithmetic_correctness",
+            "bug": "Integer overflow in calculation of memory allocation size",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          },
+          {
+            "type": "api_correctness",
+            "bug": "Unvalidated allocation size and potential use-after-free",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          },
+          {
+            "type": "protocol_compliance",
+            "bug": "Unvalidated field value in PixarLogDecode function",
+            "confidence": 0.9,
+            "has_prior_ref": true
+          }
+        ],
+        "elapsed_s": 31.64
+      },
+      "bef": {
+        "memory_score": 0.5262,
+        "semantic_score": 0.905,
+        "gap": 0.3788,
+        "posterior": 0.9137,
+        "routing": "needs_consensus",
+        "elapsed_s": 0.0
+      },
+      "consensus": {
+        "conflict_type": "agrees_vulnerable",
+        "conflict_resolution": "Both analysts confirm vulnerability. Memory Safety: Moderate. Semantic: Missing NULL check after allocation, Use-after-f",
+        "elapsed_s": 0.0
+      },
+      "finding": {
+        "confirmed": true,
+        "severity": "medium",
+        "confidence": 0.9137,
+        "model_used": "fast/agrees_vulnerable",
+        "stage": "4.6_fusion_judge",
+        "routing": "?"
+      }
+    },
+    {
+      "name": "allocChoppedUpStripArrays",
+      "binary_id": "TIF001",
+      "expected_cat": "TP",
+      "is_gt": true,
+      "source": "stratified",
+      "category": "allocator",
+      "stage3": {
+        "n_candidates": 2,
+        "n_evidence": 2,
+        "fwd": 5,
+        "bwd": 0,
+        "sem": 8,
+        "prior": 0,
+        "elapsed_s": 0.01
+      },
+      "stage4": {
+        "n_assessments": 2,
+        "vuln_type": "integer_overflow",
+        "hypothesis_support": "Moderate",
+        "confirmed": true,
+        "evidence_quality": "Good",
+        "model_uncertainty": "Moderate",
+        "overall_uncertainty": "Moderate",
+        "reachability": "Medium",
+        "exploitability": "Medium",
+        "impact": "High",
+        "agreement_level": "Low",
+        "n_active_signals": 4,
+        "n_hypotheses": 3,
+        "n_contradictions": 1,
+        "elapsed_s": 54.62
+      },
+      "stage45": {
+        "n": 5,
+        "confirmed": 5,
+        "analyses": [
+          {
+            "type": "logic_validation",
+            "bug": "Missing NULL check after allocation",
+            "confidence": 0.8,
+            "has_prior_ref": false
+          },
+          {
+            "type": "state_machine",
+            "bug": "Use-after-free vulnerability",
+            "confidence": 0.7,
+            "has_prior_ref": true
+          },
+          {
+            "type": "arithmetic_correctness",
+            "bug": "Integer overflow in allocation size calculation",
+            "confidence": 0.9,
+            "has_prior_ref": true
+          },
+          {
+            "type": "api_correctness",
+            "bug": "Missing NULL check after allocation and potential use-after-",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          },
+          {
+            "type": "protocol_compliance",
+            "bug": "Unvalidated chunk size and field values in TIFF processing",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          }
+        ],
+        "elapsed_s": 28.41
+      },
+      "bef": {
+        "memory_score": 0.5262,
+        "semantic_score": 0.905,
+        "gap": 0.3788,
+        "posterior": 0.9137,
+        "routing": "needs_consensus",
+        "elapsed_s": 0.0
+      },
+      "consensus": {
+        "conflict_type": "agrees_vulnerable",
+        "conflict_resolution": "Both analysts confirm vulnerability. Memory Safety: Moderate. Semantic: Missing NULL check after allocation, Use-after-f",
+        "elapsed_s": 0.0
+      },
+      "finding": {
+        "confirmed": true,
+        "severity": "medium",
+        "confidence": 0.9137,
+        "model_used": "fast/agrees_vulnerable",
+        "stage": "4.6_fusion_judge",
+        "routing": "?"
+      }
+    },
+    {
+      "name": "TIFFPrintDirectory",
+      "binary_id": "TIF001",
+      "expected_cat": "TP",
+      "is_gt": true,
+      "source": "stratified",
+      "category": "parser",
+      "stage3": {
+        "n_candidates": 11,
+        "n_evidence": 11,
+        "fwd": 14,
+        "bwd": 7,
+        "sem": 44,
+        "prior": 0,
+        "elapsed_s": 0.05
+      },
+      "stage4": {
+        "n_assessments": 5,
+        "vuln_type": "integer_overflow",
+        "hypothesis_support": "Strong",
+        "confirmed": true,
+        "evidence_quality": "Good",
+        "model_uncertainty": "Moderate",
+        "overall_uncertainty": "Moderate",
+        "reachability": "Medium",
+        "exploitability": "Medium",
+        "impact": "Critical",
+        "agreement_level": "High",
+        "n_active_signals": 5,
+        "n_hypotheses": 3,
+        "n_contradictions": 0,
+        "elapsed_s": 135.81
+      },
+      "stage45": {
+        "n": 5,
+        "confirmed": 5,
+        "analyses": [
+          {
+            "type": "logic_validation",
+            "bug": "Missing NULL check after allocation",
+            "confidence": 0.8,
+            "has_prior_ref": false
+          },
+          {
+            "type": "state_machine",
+            "bug": "Use-after-free in TIFFPrintDirectory function",
+            "confidence": 0.7,
+            "has_prior_ref": true
+          },
+          {
+            "type": "arithmetic_correctness",
+            "bug": "Integer overflow in calculation of size",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          },
+          {
+            "type": "api_correctness",
+            "bug": "Format string from external input passed to printf family",
+            "confidence": 0.6,
+            "has_prior_ref": true
+          },
+          {
+            "type": "protocol_compliance",
+            "bug": "Unvalidated field values in TIFF image decoder",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          }
+        ],
+        "elapsed_s": 21.89
+      },
+      "bef": {
+        "memory_score": 0.7286,
+        "semantic_score": 0.8825,
+        "gap": 0.1539,
+        "posterior": 0.9528,
+        "routing": "bayes_direct_confirm",
+        "elapsed_s": 0.0
+      },
+      "consensus": {
+        "skipped": true,
+        "reason": "bayes_direct_confirm"
+      },
+      "finding": {
+        "confirmed": true,
+        "severity": "critical",
+        "confidence": 0.9528,
+        "model_used": "bef/bayes_direct_confirm",
+        "stage": "4.6_bef",
+        "routing": "bayes_direct_confirm"
+      }
+    },
+    {
+      "name": "ChopUpSingleUncompressedStrip",
+      "binary_id": "TIF001",
+      "expected_cat": "TP",
+      "is_gt": true,
+      "source": "stratified",
+      "category": "logic",
+      "stage3": {
+        "n_candidates": 1,
+        "n_evidence": 1,
+        "fwd": 0,
+        "bwd": 0,
+        "sem": 2,
+        "prior": 0,
+        "elapsed_s": 0.01
+      },
+      "stage4": {
+        "n_assessments": 1,
+        "vuln_type": "integer_overflow",
+        "hypothesis_support": "Weak",
+        "confirmed": false,
+        "evidence_quality": "Poor",
+        "model_uncertainty": "High",
+        "overall_uncertainty": "High",
+        "reachability": "Medium",
+        "exploitability": "Low",
+        "impact": "Medium",
+        "agreement_level": "Low",
+        "n_active_signals": 4,
+        "n_hypotheses": 3,
+        "n_contradictions": 1,
+        "elapsed_s": 26.77
+      },
+      "stage45": {
+        "n": 5,
+        "confirmed": 5,
+        "analyses": [
+          {
+            "type": "logic_validation",
+            "bug": "Missing NULL check after allocation",
+            "confidence": 0.8,
+            "has_prior_ref": false
+          },
+          {
+            "type": "state_machine",
+            "bug": "Use-after-free in TIFFGetStrileByteCount",
+            "confidence": 0.7,
+            "has_prior_ref": true
+          },
+          {
+            "type": "arithmetic_correctness",
+            "bug": "Integer overflow in strip size calculation",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          },
+          {
+            "type": "api_correctness",
+            "bug": "Missing NULL check after allocation and potential integer ov",
+            "confidence": 0.9,
+            "has_prior_ref": true
+          },
+          {
+            "type": "protocol_compliance",
+            "bug": "Unvalidated chunk size and field values in TIFF processing",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          }
+        ],
+        "elapsed_s": 34.34
+      },
+      "bef": {
+        "memory_score": 0.196,
+        "semantic_score": 0.905,
+        "gap": 0.709,
+        "posterior": 0.699,
+        "routing": "needs_consensus",
+        "elapsed_s": 0.0
+      },
+      "consensus": {
+        "conflict_type": "one_sided_semantic",
+        "conflict_resolution": "Semantic Analyst only \u2014 Memory Safety Analyst did not confirm this function. Uncertainty elevated: single-analyst verdic",
+        "elapsed_s": 0.0
+      },
+      "finding": {
+        "confirmed": true,
+        "severity": "medium",
+        "confidence": 0.699,
+        "model_used": "fast/one_sided_semantic",
+        "stage": "4.6_fusion_judge",
+        "routing": "?"
+      }
+    },
+    {
+      "name": "_TIFFMultiply32",
+      "binary_id": "TIF001",
+      "expected_cat": "SAFE",
+      "is_gt": false,
+      "source": "stratified",
+      "category": "arithmetic",
+      "stage3": {
+        "n_candidates": 1,
+        "n_evidence": 1,
+        "fwd": 0,
+        "bwd": 0,
+        "sem": 2,
+        "prior": 0,
+        "elapsed_s": 0.0
+      },
+      "stage4": {
+        "n_assessments": 1,
+        "vuln_type": "integer_overflow",
+        "hypothesis_support": "Weak",
+        "confirmed": false,
+        "evidence_quality": "Poor",
+        "model_uncertainty": "High",
+        "overall_uncertainty": "High",
+        "reachability": "Medium",
+        "exploitability": "Low",
+        "impact": "Medium",
+        "agreement_level": "Low",
+        "n_active_signals": 4,
+        "n_hypotheses": 3,
+        "n_contradictions": 1,
+        "elapsed_s": 24.34
+      },
+      "stage45": {
+        "n": 5,
+        "confirmed": 5,
+        "analyses": [
+          {
+            "type": "logic_validation",
+            "bug": "Unvalidated division by user-controlled value",
+            "confidence": 0.8,
+            "has_prior_ref": false
+          },
+          {
+            "type": "state_machine",
+            "bug": "Unvalidated division and potential use-before-initialization",
+            "confidence": 0.7,
+            "has_prior_ref": true
+          },
+          {
+            "type": "arithmetic_correctness",
+            "bug": "Division by zero or integer overflow",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          },
+          {
+            "type": "api_correctness",
+            "bug": "Unvalidated division by user-controlled value",
+            "confidence": 0.9,
+            "has_prior_ref": true
+          },
+          {
+            "type": "protocol_compliance",
+            "bug": "Unvalidated division and potential integer overflow",
+            "confidence": 0.92,
+            "has_prior_ref": true
+          }
+        ],
+        "elapsed_s": 19.66
+      },
+      "bef": {
+        "memory_score": 0.196,
+        "semantic_score": 0.914,
+        "gap": 0.718,
+        "posterior": 0.7215,
+        "routing": "needs_consensus",
+        "elapsed_s": 0.0
+      },
+      "consensus": {
+        "conflict_type": "one_sided_semantic",
+        "conflict_resolution": "Semantic Analyst only \u2014 Memory Safety Analyst did not confirm this function. Uncertainty elevated: single-analyst verdic",
+        "elapsed_s": 0.0
+      },
+      "finding": {
+        "confirmed": true,
+        "severity": "medium",
+        "confidence": 0.7215,
+        "model_used": "fast/one_sided_semantic",
+        "stage": "4.6_fusion_judge",
+        "routing": "?"
+      }
+    },
+    {
+      "name": "wavlike_read_fmt_chunk",
+      "binary_id": "SND001",
+      "expected_cat": "TP",
+      "is_gt": true,
+      "source": "stratified",
+      "category": "parser",
+      "stage3": {
+        "n_candidates": 11,
+        "n_evidence": 9,
+        "fwd": 25,
+        "bwd": 2,
+        "sem": 45,
+        "prior": 0,
+        "elapsed_s": 0.06
+      },
+      "stage4": {
+        "n_assessments": 5,
+        "vuln_type": "buffer_overflow",
+        "hypothesis_support": "Strong",
+        "confirmed": true,
+        "evidence_quality": "Excellent",
+        "model_uncertainty": "Low",
+        "overall_uncertainty": "Low",
+        "reachability": "High",
+        "exploitability": "High",
+        "impact": "Medium",
+        "agreement_level": "Low",
+        "n_active_signals": 3,
+        "n_hypotheses": 1,
+        "n_contradictions": 0,
+        "elapsed_s": 136.52
+      },
+      "stage45": {
+        "n": 5,
+        "confirmed": 5,
+        "analyses": [
+          {
+            "type": "logic_validation",
+            "bug": "Missing NULL check after allocation",
+            "confidence": 0.7,
+            "has_prior_ref": false
+          },
+          {
+            "type": "state_machine",
+            "bug": "Use-after-free in wavlike_read_fmt_chunk",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          },
+          {
+            "type": "arithmetic_correctness",
+            "bug": "Integer overflow in calculation of memory allocation size",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          },
+          {
+            "type": "api_correctness",
+            "bug": "Format string from external input passed to printf family",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          },
+          {
+            "type": "protocol_compliance",
+            "bug": "Unvalidated chunk size and field values",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          }
+        ],
+        "elapsed_s": 46.25
+      },
+      "bef": {
+        "memory_score": 0.9,
+        "semantic_score": 0.8825,
+        "gap": 0.0175,
+        "posterior": 0.9854,
+        "routing": "bayes_direct_confirm",
+        "elapsed_s": 0.0
+      },
+      "consensus": {
+        "skipped": true,
+        "reason": "bayes_direct_confirm"
+      },
+      "finding": {
+        "confirmed": true,
+        "severity": "critical",
+        "confidence": 0.9854,
+        "model_used": "bef/bayes_direct_confirm",
+        "stage": "4.6_bef",
+        "routing": "bayes_direct_confirm"
+      }
+    },
+    {
+      "name": "psf_binheader_writef",
+      "binary_id": "SND001",
+      "expected_cat": "TP",
+      "is_gt": true,
+      "source": "stratified",
+      "category": "arithmetic",
+      "stage3": {
+        "n_candidates": 1,
+        "n_evidence": 1,
+        "fwd": 0,
+        "bwd": 0,
+        "sem": 2,
+        "prior": 0,
+        "elapsed_s": 0.02
+      },
+      "stage4": {
+        "n_assessments": 1,
+        "vuln_type": "integer_overflow",
+        "hypothesis_support": "Weak",
+        "confirmed": false,
+        "evidence_quality": "Poor",
+        "model_uncertainty": "High",
+        "overall_uncertainty": "High",
+        "reachability": "Medium",
+        "exploitability": "Low",
+        "impact": "Medium",
+        "agreement_level": "Low",
+        "n_active_signals": 4,
+        "n_hypotheses": 3,
+        "n_contradictions": 1,
+        "elapsed_s": 32.97
+      },
+      "stage45": {
+        "n": 5,
+        "confirmed": 5,
+        "analyses": [
+          {
+            "type": "logic_validation",
+            "bug": "Missing NULL check after allocation",
+            "confidence": 0.8,
+            "has_prior_ref": false
+          },
+          {
+            "type": "state_machine",
+            "bug": "Use-after-free in psf_binheader_writef",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          },
+          {
+            "type": "arithmetic_correctness",
+            "bug": "Integer overflow in allocation size calculation",
+            "confidence": 0.7,
+            "has_prior_ref": true
+          },
+          {
+            "type": "api_correctness",
+            "bug": "Missing NULL check after allocation and potential use-after-",
+            "confidence": 0.9,
+            "has_prior_ref": true
+          },
+          {
+            "type": "protocol_compliance",
+            "bug": "Unvalidated chunk size and field values",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          }
+        ],
+        "elapsed_s": 36.93
+      },
+      "bef": {
+        "memory_score": 0.196,
+        "semantic_score": 0.905,
+        "gap": 0.709,
+        "posterior": 0.699,
+        "routing": "needs_consensus",
+        "elapsed_s": 0.0
+      },
+      "consensus": {
+        "conflict_type": "one_sided_semantic",
+        "conflict_resolution": "Semantic Analyst only \u2014 Memory Safety Analyst did not confirm this function. Uncertainty elevated: single-analyst verdic",
+        "elapsed_s": 0.0
+      },
+      "finding": {
+        "confirmed": true,
+        "severity": "medium",
+        "confidence": 0.699,
+        "model_used": "fast/one_sided_semantic",
+        "stage": "4.6_fusion_judge",
+        "routing": "?"
+      }
+    },
+    {
+      "name": "paf_read_header",
+      "binary_id": "SND001",
+      "expected_cat": "TP",
+      "is_gt": true,
+      "source": "stratified",
+      "category": "parser",
+      "stage3": {
+        "n_candidates": 4,
+        "n_evidence": 3,
+        "fwd": 3,
+        "bwd": 1,
+        "sem": 9,
+        "prior": 0,
+        "elapsed_s": 0.02
+      },
+      "stage4": {
+        "n_assessments": 4,
+        "vuln_type": "buffer_overflow",
+        "hypothesis_support": "Strong",
+        "confirmed": true,
+        "evidence_quality": "Excellent",
+        "model_uncertainty": "Low",
+        "overall_uncertainty": "Low",
+        "reachability": "High",
+        "exploitability": "High",
+        "impact": "Medium",
+        "agreement_level": "Low",
+        "n_active_signals": 3,
+        "n_hypotheses": 1,
+        "n_contradictions": 0,
+        "elapsed_s": 126.9
+      },
+      "stage45": {
+        "n": 5,
+        "confirmed": 5,
+        "analyses": [
+          {
+            "type": "logic_validation",
+            "bug": "Missing NULL check after allocation",
+            "confidence": 0.8,
+            "has_prior_ref": false
+          },
+          {
+            "type": "state_machine",
+            "bug": "Use-after-free in psf_binheader_readf calls",
+            "confidence": 0.7,
+            "has_prior_ref": true
+          },
+          {
+            "type": "arithmetic_correctness",
+            "bug": "Integer overflow in calculation of VAR_4",
+            "confidence": 0.6,
+            "has_prior_ref": true
+          },
+          {
+            "type": "api_correctness",
+            "bug": "Potential NULL pointer dereference in psf_binheader_readf ca",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          },
+          {
+            "type": "protocol_compliance",
+            "bug": "Unvalidated chunk size",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          }
+        ],
+        "elapsed_s": 37.49
+      },
+      "bef": {
+        "memory_score": 0.9,
+        "semantic_score": 0.8825,
+        "gap": 0.0175,
+        "posterior": 0.9854,
+        "routing": "bayes_direct_confirm",
+        "elapsed_s": 0.0
+      },
+      "consensus": {
+        "skipped": true,
+        "reason": "bayes_direct_confirm"
+      },
+      "finding": {
+        "confirmed": true,
+        "severity": "critical",
+        "confidence": 0.9854,
+        "model_used": "bef/bayes_direct_confirm",
+        "stage": "4.6_bef",
+        "routing": "bayes_direct_confirm"
+      }
+    },
+    {
+      "name": "aiff_read_chanmap",
+      "binary_id": "SND001",
+      "expected_cat": "TP",
+      "is_gt": true,
+      "source": "stratified",
+      "category": "parser",
+      "stage3": {
+        "n_candidates": 3,
+        "n_evidence": 3,
+        "fwd": 3,
+        "bwd": 3,
+        "sem": 12,
+        "prior": 0,
+        "elapsed_s": 0.01
+      },
+      "stage4": {
+        "n_assessments": 3,
+        "vuln_type": "buffer_overflow",
+        "hypothesis_support": "Strong",
+        "confirmed": true,
+        "evidence_quality": "Excellent",
+        "model_uncertainty": "Low",
+        "overall_uncertainty": "Low",
+        "reachability": "High",
+        "exploitability": "High",
+        "impact": "Medium",
+        "agreement_level": "Low",
+        "n_active_signals": 3,
+        "n_hypotheses": 1,
+        "n_contradictions": 0,
+        "elapsed_s": 97.33
+      },
+      "stage45": {
+        "n": 4,
+        "confirmed": 4,
+        "analyses": [
+          {
+            "type": "logic_validation",
+            "bug": "Missing NULL check after allocation",
+            "confidence": 0.8,
+            "has_prior_ref": false
+          },
+          {
+            "type": "arithmetic_correctness",
+            "bug": "Integer overflow in allocation size calculation",
+            "confidence": 0.7,
+            "has_prior_ref": true
+          },
+          {
+            "type": "api_correctness",
+            "bug": "malloc without null-check",
+            "confidence": 0.9,
+            "has_prior_ref": true
+          },
+          {
+            "type": "protocol_compliance",
+            "bug": "Unvalidated field value in aiff_read_chanmap",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          }
+        ],
+        "elapsed_s": 34.92
+      },
+      "bef": {
+        "memory_score": 0.9,
+        "semantic_score": 0.905,
+        "gap": 0.005,
+        "posterior": 0.9885,
+        "routing": "bayes_direct_confirm",
+        "elapsed_s": 0.0
+      },
+      "consensus": {
+        "skipped": true,
+        "reason": "bayes_direct_confirm"
+      },
+      "finding": {
+        "confirmed": true,
+        "severity": "critical",
+        "confidence": 0.9885,
+        "model_used": "bef/bayes_direct_confirm",
+        "stage": "4.6_bef",
+        "routing": "bayes_direct_confirm"
+      }
+    },
+    {
+      "name": "sf_open",
+      "binary_id": "SND001",
+      "expected_cat": "SAFE",
+      "is_gt": false,
+      "source": "stratified",
+      "category": "logic",
+      "stage3": {
+        "n_candidates": 1,
+        "n_evidence": 1,
+        "fwd": 0,
+        "bwd": 0,
+        "sem": 2,
+        "prior": 0,
+        "elapsed_s": 0.01
+      },
+      "stage4": {
+        "n_assessments": 1,
+        "vuln_type": "buffer_overflow",
+        "hypothesis_support": "Weak",
+        "confirmed": false,
+        "evidence_quality": "Poor",
+        "model_uncertainty": "High",
+        "overall_uncertainty": "High",
+        "reachability": "Medium",
+        "exploitability": "Low",
+        "impact": "High",
+        "agreement_level": "Low",
+        "n_active_signals": 4,
+        "n_hypotheses": 3,
+        "n_contradictions": 1,
+        "elapsed_s": 30.09
+      },
+      "stage45": {
+        "n": 4,
+        "confirmed": 4,
+        "analyses": [
+          {
+            "type": "logic_validation",
+            "bug": "Missing NULL check after allocation",
+            "confidence": 0.8,
+            "has_prior_ref": false
+          },
+          {
+            "type": "state_machine",
+            "bug": "Use-after-free in sf_open function",
+            "confidence": 0.7,
+            "has_prior_ref": true
+          },
+          {
+            "type": "api_correctness",
+            "bug": "Missing NULL check after allocation and potential use-after-",
+            "confidence": 0.85,
+            "has_prior_ref": true
+          },
+          {
+            "type": "protocol_compliance",
+            "bug": "Unvalidated field values in audio decoder",
+            "confidence": 0.6,
+            "has_prior_ref": true
+          }
+        ],
+        "elapsed_s": 37.42
+      },
+      "bef": {
+        "memory_score": 0.196,
+        "semantic_score": 0.8825,
+        "gap": 0.6865,
+        "posterior": 0.6468,
+        "routing": "needs_consensus",
+        "elapsed_s": 0.0
+      },
+      "consensus": {
+        "conflict_type": "one_sided_semantic",
+        "conflict_resolution": "Semantic Analyst only \u2014 Memory Safety Analyst did not confirm this function. Uncertainty elevated: single-analyst verdic",
+        "elapsed_s": 0.0
+      },
+      "finding": {
+        "confirmed": true,
+        "severity": "medium",
+        "confidence": 0.6468,
+        "model_used": "fast/one_sided_semantic",
+        "stage": "4.6_fusion_judge",
+        "routing": "?"
+      }
+    },
+    {
+      "name": "sf_close",
+      "binary_id": "SND001",
+      "expected_cat": "SAFE",
+      "is_gt": false,
+      "source": "stratified",
+      "category": "simple",
+      "stage3": {
+        "n_candidates": 1,
+        "n_evidence": 1,
+        "fwd": 0,
+        "bwd": 0,
+        "sem": 2,
+        "prior": 0,
+        "elapsed_s": 0.0
+      },
+      "stage4": {
+        "n_assessments": 1,
+        "vuln_type": "buffer_overflow",
+        "hypothesis_support": "Weak",
+        "confirmed": false,
+        "evidence_quality": "Poor",
+        "model_uncertainty": "High",
+        "overall_uncertainty": "High",
+        "reachability": "Medium",
+        "exploitability": "Low",
+        "impact": "Medium",
+        "agreement_level": "Low",
+        "n_active_signals": 4,
+        "n_hypotheses": 3,
+        "n_contradictions": 1,
+        "elapsed_s": 21.52
+      },
+      "stage45": {
+        "n": 4,
+        "confirmed": 4,
+        "analyses": [
+          {
+            "type": "logic_validation",
+            "bug": "Missing NULL check after allocation",
+            "confidence": 0.8,
+            "has_prior_ref": false
+          },
+          {
+            "type": "state_machine",
+            "bug": "Use-after-free in sf_close function",
+            "confidence": 0.9,
+            "has_prior_ref": true
+          },
+          {
+            "type": "api_correctness",
+            "bug": "NULL pointer dereference in psf_close",
+            "confidence": 0.95,
+            "has_prior_ref": true
+          },
+          {
+            "type": "protocol_compliance",
+            "bug": "Unvalidated field value in audio decoder",
+            "confidence": 0.8,
+            "has_prior_ref": true
+          }
+        ],
+        "elapsed_s": 34.23
+      },
+      "bef": {
+        "memory_score": 0.196,
+        "semantic_score": 0.9275,
+        "gap": 0.7315,
+        "posterior": 0.7572,
+        "routing": "needs_consensus",
+        "elapsed_s": 0.0
+      },
+      "consensus": {
+        "conflict_type": "one_sided_semantic",
+        "conflict_resolution": "Semantic Analyst only \u2014 Memory Safety Analyst did not confirm this function. Uncertainty elevated: single-analyst verdic",
+        "elapsed_s": 0.0
+      },
+      "finding": {
+        "confirmed": true,
+        "severity": "medium",
+        "confidence": 0.7572,
+        "model_used": "fast/one_sided_semantic",
+        "stage": "4.6_fusion_judge",
+        "routing": "?"
+      }
+    }
+  ],
+  "metrics": {
+    "actual_tp": 22,
+    "actual_fp": 4,
+    "actual_fn": 1,
+    "actual_tn": 3,
+    "precision": 0.846,
+    "recall": 0.957,
+    "f1": 0.898,
+    "bef_routing": {
+      "needs_consensus": 22,
+      "no_signal": 4,
+      "bayes_direct_confirm": 4
+    },
+    "consensus_rate": 0.846,
+    "bef_savings_pct": 15.4,
+    "s45_exclusive_tps": 6,
+    "s45_pushed": 23,
+    "s4_alone_tps": 16,
+    "tp_conf_hist": {
+      "0.0-0.30": 0,
+      "0.30-0.55": 0,
+      "0.55-0.70": 3,
+      "0.70-0.85": 2,
+      "0.85-1.00": 17
+    },
+    "fp_conf_hist": {
+      "0.0-0.30": 0,
+      "0.30-0.55": 0,
+      "0.55-0.70": 1,
+      "0.70-0.85": 2,
+      "0.85-1.00": 1
+    },
+    "tp_conf_mean": 0.883,
+    "fp_conf_mean": 0.755,
+    "disagreements": [
+      {
+        "func": "png_handle_eXIf",
+        "expected": "TP",
+        "conflict_type": "agrees_vulnerable",
+        "resolution": "Both analysts confirm vulnerability. Memory Safety: Moderate. Semantic: Missing NULL check after allocation, Use-after-f",
+        "bef_gap": 0.3788,
+        "confirmed": true
+      },
+      {
+        "func": "png_check_chunk_length",
+        "expected": "TP",
+        "conflict_type": "agrees_vulnerable",
+        "resolution": "Both analysts confirm vulnerability. Memory Safety: Moderate. Semantic: Off-by-one error in chunk length validation, Pot",
+        "bef_gap": 0.3878,
+        "confirmed": true
+      },
+      {
+        "func": "png_handle_PLTE",
+        "expected": "TP",
+        "conflict_type": "one_sided_semantic",
+        "resolution": "Semantic Analyst only \u2014 Memory Safety Analyst did not confirm this function. Uncertainty elevated: single-analyst verdic",
+        "bef_gap": 0.4639,
+        "confirmed": true
+      },
+      {
+        "func": "png_read_info",
+        "expected": "SAFE",
+        "conflict_type": "agrees_vulnerable",
+        "resolution": "Both analysts confirm vulnerability. Memory Safety: Moderate. Semantic: Missing error handling for failed reads, Use-aft",
+        "bef_gap": 0.3563,
+        "confirmed": true
+      },
+      {
+        "func": "sqlite3Select",
+        "expected": "TP",
+        "conflict_type": "agrees_vulnerable",
+        "resolution": "Both analysts confirm vulnerability. Memory Safety: Moderate. Semantic: Missing NULL check after allocation, Use-after-f",
+        "bef_gap": 0.3563,
+        "confirmed": true
+      },
+      {
+        "func": "multiSelect",
+        "expected": "TP",
+        "conflict_type": "one_sided_semantic",
+        "resolution": "Semantic Analyst only \u2014 Memory Safety Analyst did not confirm this function. Uncertainty elevated: single-analyst verdic",
+        "bef_gap": 0.709,
+        "confirmed": true
+      },
+      {
+        "func": "sqlite3_str_vappendf",
+        "expected": "TP",
+        "conflict_type": "agrees_vulnerable",
+        "resolution": "Both analysts confirm vulnerability. Memory Safety: Moderate. Semantic: Missing NULL check after allocation, Potential u",
+        "bef_gap": 0.3563,
+        "confirmed": true
+      },
+      {
+        "func": "flattenSubquery",
+        "expected": "TP",
+        "conflict_type": "agrees_vulnerable",
+        "resolution": "Both analysts confirm vulnerability. Memory Safety: Moderate. Semantic: Missing NULL check after allocation, Use-after-f",
+        "bef_gap": 0.3563,
+        "confirmed": true
+      },
+      {
+        "func": "selectExpander",
+        "expected": "TP",
+        "conflict_type": "agrees_vulnerable",
+        "resolution": "Both analysts confirm vulnerability. Memory Safety: Moderate. Semantic: Use-after-free in sqlite3DbMallocZero allocation",
+        "bef_gap": 0.3788,
+        "confirmed": true
+      },
+      {
+        "func": "xmlStringLenDecodeEntities",
+        "expected": "TP",
+        "conflict_type": "agrees_vulnerable",
+        "resolution": "Both analysts confirm vulnerability. Memory Safety: Moderate. Semantic: Missing NULL check after allocation, Use-after-f",
+        "bef_gap": 0.3563,
+        "confirmed": true
+      },
+      {
+        "func": "htmlParseTryOrFinish",
+        "expected": "TP",
+        "conflict_type": "agrees_vulnerable",
+        "resolution": "Both analysts confirm vulnerability. Memory Safety: Moderate. Semantic: Missing NULL check after allocation, Use-after-f",
+        "bef_gap": 0.3563,
+        "confirmed": true
+      },
+      {
+        "func": "xmlSnprintfElementContent",
+        "expected": "TP",
+        "conflict_type": "one_sided_semantic",
+        "resolution": "Semantic Analyst only \u2014 Memory Safety Analyst did not confirm this function. Uncertainty elevated: single-analyst verdic",
+        "bef_gap": 0.4639,
+        "confirmed": true
+      },
+      {
+        "func": "xmlStrncat",
+        "expected": "TP",
+        "conflict_type": "agrees_vulnerable",
+        "resolution": "Both analysts confirm vulnerability. Memory Safety: Moderate. Semantic: Missing NULL check after allocation, Potential u",
+        "bef_gap": 0.3788,
+        "confirmed": true
+      },
+      {
+        "func": "xmlParseComment",
+        "expected": "TP",
+        "conflict_type": "agrees_vulnerable",
+        "resolution": "Both analysts confirm vulnerability. Memory Safety: Moderate. Semantic: Missing NULL check after allocation, Use-after-f",
+        "bef_gap": 0.3563,
+        "confirmed": true
+      },
+      {
+        "func": "LZWDecodeCompat",
+        "expected": "TP",
+        "conflict_type": "one_sided_semantic",
+        "resolution": "Semantic Analyst only \u2014 Memory Safety Analyst did not confirm this function. Uncertainty elevated: single-analyst verdic",
+        "bef_gap": 0.4864,
+        "confirmed": true
+      },
+      {
+        "func": "PixarLogDecode",
+        "expected": "TP",
+        "conflict_type": "agrees_vulnerable",
+        "resolution": "Both analysts confirm vulnerability. Memory Safety: Moderate. Semantic: Missing NULL check after allocation, Use-after-f",
+        "bef_gap": 0.3788,
+        "confirmed": true
+      },
+      {
+        "func": "allocChoppedUpStripArrays",
+        "expected": "TP",
+        "conflict_type": "agrees_vulnerable",
+        "resolution": "Both analysts confirm vulnerability. Memory Safety: Moderate. Semantic: Missing NULL check after allocation, Use-after-f",
+        "bef_gap": 0.3788,
+        "confirmed": true
+      },
+      {
+        "func": "ChopUpSingleUncompressedStrip",
+        "expected": "TP",
+        "conflict_type": "one_sided_semantic",
+        "resolution": "Semantic Analyst only \u2014 Memory Safety Analyst did not confirm this function. Uncertainty elevated: single-analyst verdic",
+        "bef_gap": 0.709,
+        "confirmed": true
+      },
+      {
+        "func": "_TIFFMultiply32",
+        "expected": "SAFE",
+        "conflict_type": "one_sided_semantic",
+        "resolution": "Semantic Analyst only \u2014 Memory Safety Analyst did not confirm this function. Uncertainty elevated: single-analyst verdic",
+        "bef_gap": 0.718,
+        "confirmed": true
+      },
+      {
+        "func": "psf_binheader_writef",
+        "expected": "TP",
+        "conflict_type": "one_sided_semantic",
+        "resolution": "Semantic Analyst only \u2014 Memory Safety Analyst did not confirm this function. Uncertainty elevated: single-analyst verdic",
+        "bef_gap": 0.709,
+        "confirmed": true
+      },
+      {
+        "func": "sf_open",
+        "expected": "SAFE",
+        "conflict_type": "one_sided_semantic",
+        "resolution": "Semantic Analyst only \u2014 Memory Safety Analyst did not confirm this function. Uncertainty elevated: single-analyst verdic",
+        "bef_gap": 0.6865,
+        "confirmed": true
+      },
+      {
+        "func": "sf_close",
+        "expected": "SAFE",
+        "conflict_type": "one_sided_semantic",
+        "resolution": "Semantic Analyst only \u2014 Memory Safety Analyst did not confirm this function. Uncertainty elevated: single-analyst verdic",
+        "bef_gap": 0.7315,
+        "confirmed": true
+      }
+    ]
+  },
+  "elapsed_s": 2849.7
+}

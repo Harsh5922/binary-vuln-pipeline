@@ -1,0 +1,14 @@
+# requirements.txt
+
+# Core — Ghidra bridge
+pyghidra>=1.2.0          # requires GHIDRA_INSTALL_DIR env var set
+
+# Anthropic API (reasoning agent + LLM filter)
+anthropic>=0.25.0
+
+# Embedding-based filter (Stage 2)
+sentence-transformers>=2.7.0
+numpy>=1.26.0
+
+# Optional: faster cosine search for large vuln libraries
+# faiss-cpu>=1.8.0

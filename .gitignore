@@ -1,0 +1,29 @@
+# API keys — never commit
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Databases (generated, not source)
+*.db
+
+# Ghidra project files (large binary)
+vuln_binary.exe_ghidra/
+vuln_O0_ghidra/
+
+# Generated P-code data (re-extractable from binaries)
+pcode.jsonl
+
+# Run logs
+*.log
+*_err.log
+
+# Claude settings
+.claude/
+
+# OS
+Thumbs.db
+.DS_Store

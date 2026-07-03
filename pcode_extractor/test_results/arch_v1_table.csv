@@ -1,0 +1,31 @@
+Function,Library,GT,Category,Stage3,Stage4,Stage4_5,BEF,Judge,Final,Confidence,Outcome
+png_handle_eXIf,PNG,TP,allocator,Fwd+Sem,Moderate/YES,5/5 conf,Consensus,Agrees Vulnerable,Confirmed,0.914,TP
+png_check_IHDR,PNG,TP,parser,None,Skipped,5/5 conf,No-Signal,?,Rejected,0.0,FN
+png_check_chunk_length,PNG,TP,arithmetic,Sem-only,Moderate/YES,5/5 conf,Consensus,Agrees Vulnerable,Confirmed,0.922,TP
+png_handle_PLTE,PNG,TP,parser,Fwd+Sem,Moderate/NO,5/5 conf,Consensus,One Sided Semantic,Confirmed,0.844,TP
+png_get_rowbytes,PNG,-,simple,None,Skipped,5/5 conf,No-Signal,?,Rejected,0.0,TN
+png_read_info,PNG,-,logic,Fwd+Sem,Moderate/YES,4/4 conf,Consensus,Agrees Vulnerable,Confirmed,0.893,FP
+sqlite3Select,SQL,TP,logic,Sem-only,Moderate/YES,5/5 conf,Consensus,Agrees Vulnerable,Confirmed,0.893,TP
+multiSelect,SQL,TP,logic,Sem-only,Weak/NO,5/5 conf,Consensus,One Sided Semantic,Confirmed,0.699,TP
+sqlite3_str_vappendf,SQL,TP,arithmetic,Sem-only,Moderate/YES,5/5 conf,Consensus,Agrees Vulnerable,Confirmed,0.893,TP
+flattenSubquery,SQL,TP,logic,Sem-only,Moderate/YES,5/5 conf,Consensus,Agrees Vulnerable,Confirmed,0.893,TP
+selectExpander,SQL,TP,logic,Sem-only,Moderate/YES,4/4 conf,Consensus,Agrees Vulnerable,Confirmed,0.914,TP
+sqlite3_errmsg,SQL,-,simple,None,Skipped,4/4 conf,No-Signal,?,Rejected,0.0,TN
+xmlStringLenDecodeEntities,XML,TP,arithmetic,Fwd+Sem,Moderate/YES,4/4 conf,Consensus,Agrees Vulnerable,Confirmed,0.893,TP
+htmlParseTryOrFinish,XML,TP,parser,Fwd+Sem,Moderate/YES,5/5 conf,Consensus,Agrees Vulnerable,Confirmed,0.893,TP
+xmlSnprintfElementContent,XML,TP,arithmetic,Sem-only,Moderate/NO,5/5 conf,Consensus,One Sided Semantic,Confirmed,0.844,TP
+xmlStrncat,XML,TP,allocator,Fwd+Sem,Moderate/YES,5/5 conf,Consensus,Agrees Vulnerable,Confirmed,0.914,TP
+xmlParseComment,XML,TP,parser,Fwd+Sem,Moderate/YES,5/5 conf,Consensus,Agrees Vulnerable,Confirmed,0.893,TP
+xmlStrlen,XML,-,simple,None,Skipped,4/4 conf,No-Signal,?,Rejected,0.0,TN
+LZWDecodeCompat,TIF,TP,arithmetic,Sem-only,Moderate/NO,5/5 conf,Consensus,One Sided Semantic,Confirmed,0.873,TP
+PixarLogDecode,TIF,TP,arithmetic,Sem-only,Moderate/YES,5/5 conf,Consensus,Agrees Vulnerable,Confirmed,0.914,TP
+allocChoppedUpStripArrays,TIF,TP,allocator,Fwd+Sem,Moderate/YES,5/5 conf,Consensus,Agrees Vulnerable,Confirmed,0.914,TP
+TIFFPrintDirectory,TIF,TP,parser,Fwd+Sem,Strong/YES,5/5 conf,Direct Confirm,Skipped,Confirmed,0.953,TP
+ChopUpSingleUncompressedStrip,TIF,TP,logic,Sem-only,Weak/NO,5/5 conf,Consensus,One Sided Semantic,Confirmed,0.699,TP
+_TIFFMultiply32,TIF,-,arithmetic,Sem-only,Weak/NO,5/5 conf,Consensus,One Sided Semantic,Confirmed,0.722,FP
+wavlike_read_fmt_chunk,SND,TP,parser,Fwd+Sem,Strong/YES,5/5 conf,Direct Confirm,Skipped,Confirmed,0.985,TP
+psf_binheader_writef,SND,TP,arithmetic,Sem-only,Weak/NO,5/5 conf,Consensus,One Sided Semantic,Confirmed,0.699,TP
+paf_read_header,SND,TP,parser,Fwd+Sem,Strong/YES,5/5 conf,Direct Confirm,Skipped,Confirmed,0.985,TP
+aiff_read_chanmap,SND,TP,parser,Fwd+Sem,Strong/YES,4/4 conf,Direct Confirm,Skipped,Confirmed,0.989,TP
+sf_open,SND,-,logic,Sem-only,Weak/NO,4/4 conf,Consensus,One Sided Semantic,Confirmed,0.647,FP
+sf_close,SND,-,simple,Sem-only,Weak/NO,4/4 conf,Consensus,One Sided Semantic,Confirmed,0.757,FP

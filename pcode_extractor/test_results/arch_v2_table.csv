@@ -1,0 +1,31 @@
+Function,Library,GT,Category,Stage3,Stage4,Stage4_5,BEF,Judge,Final,Confidence,Outcome
+png_handle_eXIf,PNG,TP,allocator,Fwd+Sem,Moderate/YES,5/5 conf,Direct Confirm,Skipped,Confirmed,0.936,TP
+png_check_IHDR,PNG,TP,parser,None,Skipped,5/5 conf,No-Signal,Skipped,Rejected,0.0,FN
+png_check_chunk_length,PNG,TP,arithmetic,Sem-only,Moderate/YES,5/5 conf,Direct Confirm,Skipped,Confirmed,0.952,TP
+png_handle_PLTE,PNG,TP,parser,Fwd+Sem,Moderate/YES,5/5 conf,Direct Confirm,Skipped,Confirmed,0.936,TP
+png_get_rowbytes,PNG,-,simple,None,Skipped,5/5 conf,No-Signal,Skipped,Rejected,0.0,TN
+png_get_valid,PNG,-,simple,None,Skipped,4/4 conf,No-Signal,Skipped,Rejected,0.0,TN
+sqlite3Select,SQL,TP,logic,Sem-only,Moderate/YES,4/4 conf,Direct Confirm,Skipped,Confirmed,0.936,TP
+multiSelect,SQL,TP,logic,Sem-only,Weak/NO,4/4 conf,Consensus,One Sided Semantic,Confirmed,0.699,TP
+sqlite3_str_vappendf,SQL,TP,arithmetic,Sem-only,Moderate/YES,5/5 conf,Direct Confirm,Skipped,Confirmed,0.921,TP
+flattenSubquery,SQL,TP,logic,Sem-only,Moderate/YES,5/5 conf,Direct Confirm,Skipped,Confirmed,0.936,TP
+selectExpander,SQL,TP,logic,Sem-only,Moderate/YES,5/5 conf,Direct Confirm,Skipped,Confirmed,0.936,TP
+sqlite3_errmsg,SQL,-,simple,None,Skipped,4/4 conf,No-Signal,Skipped,Rejected,0.0,TN
+xmlStringLenDecodeEntities,XML,TP,arithmetic,Fwd+Sem,Moderate/YES,5/5 conf,Direct Confirm,Skipped,Confirmed,0.921,TP
+htmlParseTryOrFinish,XML,TP,parser,Fwd+Sem,Moderate/YES,5/5 conf,Direct Confirm,Skipped,Confirmed,0.921,TP
+xmlSnprintfElementContent,XML,TP,arithmetic,Sem-only,Moderate/YES,5/5 conf,Direct Confirm,Skipped,Confirmed,0.921,TP
+xmlStrncat,XML,TP,allocator,Fwd+Sem,Strong/YES,4/4 conf,Direct Confirm,Skipped,Confirmed,0.962,TP
+xmlParseComment,XML,TP,parser,Fwd+Sem,Moderate/YES,4/4 conf,Direct Confirm,Skipped,Confirmed,0.905,TP
+xmlStrlen,XML,-,simple,None,Skipped,4/4 conf,No-Signal,Skipped,Rejected,0.0,TN
+LZWDecodeCompat,TIF,TP,arithmetic,Sem-only,Moderate/YES,5/5 conf,Direct Confirm,Skipped,Confirmed,0.921,TP
+PixarLogDecode,TIF,TP,arithmetic,Sem-only,Moderate/YES,5/5 conf,Direct Confirm,Skipped,Confirmed,0.921,TP
+allocChoppedUpStripArrays,TIF,TP,allocator,Fwd+Sem,Moderate/YES,5/5 conf,Direct Confirm,Skipped,Confirmed,0.921,TP
+TIFFPrintDirectory,TIF,TP,parser,Fwd+Sem,Strong/YES,5/5 conf,Direct Confirm,Skipped,Confirmed,0.953,TP
+ChopUpSingleUncompressedStrip,TIF,TP,logic,Sem-only,Weak/NO,5/5 conf,Consensus,One Sided Semantic,Confirmed,0.699,TP
+_TIFFMultiply32,TIF,-,arithmetic,Sem-only,Weak/NO,4/4 conf,Consensus,One Sided Semantic,Confirmed,0.647,FP
+wavlike_read_fmt_chunk,SND,TP,parser,Fwd+Sem,Strong/YES,5/5 conf,Direct Confirm,Skipped,Confirmed,0.982,TP
+psf_binheader_writef,SND,TP,arithmetic,Sem-only,Moderate/NO,4/4 conf,Consensus,One Sided Semantic,Confirmed,0.875,TP
+paf_read_header,SND,TP,parser,Fwd+Sem,Strong/YES,5/5 conf,Direct Confirm,Skipped,Confirmed,0.985,TP
+aiff_read_chanmap,SND,TP,parser,Fwd+Sem,Strong/YES,5/5 conf,Direct Confirm,Skipped,Confirmed,0.989,TP
+sf_strerror,SND,-,simple,None,Skipped,4/4 conf,No-Signal,Skipped,Rejected,0.0,TN
+sf_format_check,SND,-,simple,None,Skipped,5/5 conf,No-Signal,Skipped,Rejected,0.0,TN
